@@ -1,42 +1,73 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <title>Title</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-
-        <!-- Bootstrap CSS v5.2.1 -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous"
-        />
-    </head>
-
-    <body>
-        <header>
-            <!-- place navbar here -->
-        </header>
-        <main></main>
-        <footer>
-            <!-- place footer here -->
-        </footer>
-        <!-- Bootstrap JavaScript Libraries -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"
-        ></script>
-
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"
-        ></script>
-    </body>
+<html lang="es">
+<head>
+    <title>OfiTech</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="scss/style.css">
+</head>
+<body>
+    <header>
+        <nav class="ofitech-navbar">
+            <div class="ofitech-navbar__logo">
+                <span class="ofitech-logo-ofi">Ofi</span><span class="ofitech-logo-tech">Tech</span>
+            </div>
+            <div class="ofitech-navbar__search">
+                <div class="ofitech-search-box">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="buscar por categoría, producto, marca" disabled>
+                </div>
+            </div>
+            <div class="ofitech-navbar__icons">
+                <a href="inicioSesion.html" title="Usuario"><i class="fa-regular fa-user"></i></a>
+                <a href="tel:+50622222222" title="Teléfono"><i class="fa-solid fa-phone"></i></a>
+                <a href="carritoCompras.html" title="Carrito"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </nav>
+    </header>
+    <main class="ofitech-main">
+        <section class="categorias-nav">
+            <div class="categorias-container" id="categorias-container"></div>
+        </section>
+        <section class="ofertas-section">
+            <h2 class="section-title">Ofertas destacadas</h2>
+            <div class="ofertas-carousel">
+                <button class="carousel-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="ofertas-slider" id="ofertas-slider"></div>
+                <button class="carousel-btn next"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </section>
+        <section class="productos-section">
+            <h2 class="section-title">Productos mas vendidos</h2>
+            <div class="productos-grid" id="productos-grid"></div>
+        </section>
+        <section class="beneficios-section">
+            <h2 class="section-title">Beneficios</h2>
+            <div class="beneficios-grid" id="beneficios-grid"></div>
+        </section>
+    </main>
+    <div class="ofitech-spacer"></div>
+    <footer class="ofitech-footer">
+        <div class="ofitech-footer__social">
+            <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="ofitech-footer__info">
+            OFITECH DIGITAL SOLUTIONS, S.A<br>
+            Cédula jurídica: 3101999899<br>
+            Dirección: Barrio Francisco Peralta, sobre Avenida Central y Calle 33,<br>
+            10104 San José, Provincia de San José, Costa Rica.<br>
+            PBX: (506) 2222-2222
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="js/ofitech.js"></script>
+</body>
 </html>
