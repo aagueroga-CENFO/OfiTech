@@ -22,9 +22,7 @@ function renderizarCarrito() {
     carritoDeCompras.forEach((producto) => {
         const fila = document.createElement('tr');
         
-        // CORRECCIÓN UX: 
-        // 1. Añadimos max-width y clases text-truncate a la imagen y al nombre para evitar scroll horizontal.
-        // 2. Añadimos atributos data-bs-toggle="tooltip" y data-bs-title para el Tooltip bonito.
+       
         fila.innerHTML = `
             <td style="max-width: 250px;">
                 <div class="d-flex align-items-center">
@@ -53,17 +51,17 @@ function renderizarCarrito() {
     });
 
     actualizarTotal();
-    activarTooltips(); // Llamamos a la función que enciende los tooltips
+    activarTooltips(); 
 }
 
-/**
- * NUEVO: Activa los tooltips de Bootstrap en los elementos recién creados.
- * ¿Por qué?: Bootstrap requiere inicializar los tooltips manualmente por razones de rendimiento.
- */
+
+ //NUEVO: Activa los tooltips de Bootstrap en los elementos recién creados.
+ 
+
 function activarTooltips() {
-    // Buscamos todos los elementos que tengan el atributo data-bs-toggle="tooltip"
+
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    // Los inicializamos usando la librería de Bootstrap
+
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 }
 
@@ -81,7 +79,7 @@ function agregarProducto(productoNuevo) {
 }
 
 function eliminarProducto(idProducto) {
-    // Destruimos tooltips abiertos antes de eliminar (para evitar tooltips "fantasma" que se quedan pegados en pantalla)
+    // Destruimos tooltips abiertos antes de eliminar para evitar tooltips "fantasma" 
     const tooltipsAbiertos = document.querySelectorAll('.tooltip');
     tooltipsAbiertos.forEach(t => t.remove());
 
