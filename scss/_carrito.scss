@@ -1,0 +1,17 @@
+// _carrito.scss Alonso
+// Estilos personalizados específicos para la página del carrito de compras
+
+#contenedorCarrito {
+    td {
+        vertical-align: middle; // Centra verticalmente los elementos de la tabla
+    }
+    
+    input[type="number"] {
+        text-align: center;
+        border-color: $ofitech-blue;
+        &:focus {
+            box-shadow: 0 0 5px $ofitech-accent;
+            border-color: $ofitech-accent;
+        }
+    }
+}
