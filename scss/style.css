@@ -310,4 +310,9 @@ body {
   line-height: 1.4;
 }
 
+.ofitech-navbar--center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /*# sourceMappingURL=style.css.map */
