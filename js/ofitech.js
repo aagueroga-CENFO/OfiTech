@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 function renderizarCategorias() {
     const container = document.getElementById('categorias-container');
-    container.innerHTML = categorias.map(cat => 
-        `<button class="categoria-btn"><i class="fa-solid ${cat.icono}"></i> ${cat.nombre}</button>`
+    container.innerHTML = '<a href="catalogo.html" class="categoria-btn">Ver todo el catálogo</a>' + categorias.map(cat =>
+        `<button class="categoria-btn">${cat.nombre}</button>`
     ).join('');
 }
 
@@ -95,3 +95,7 @@ function setupCarousel() {
     });
 }
 
+// Actualizar badge del carrito al cargar index
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof cartUtils_updateBadge === 'function') cartUtils_updateBadge();
+});
