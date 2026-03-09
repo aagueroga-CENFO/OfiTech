@@ -97,11 +97,12 @@ body {
 .product-card {
   background: #f3f4f6;
   border: 2px solid #001762;
-  min-width: 100%;
-  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   position: relative;
+  max-width: 220px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .producto-card {
@@ -110,25 +111,27 @@ body {
 }
 
 .productos-grid {
-  display: flex;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 220px);
+  gap: 20px;
+  justify-content: center;
 }
 
 .product-img-wrap {
   position: relative;
-  background: #e5e7eb;
-  height: 280px;
+  background: #fff;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: 10px;
 }
 
 .product-img-wrap img {
   max-width: 100%;
   max-height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .save-btn {
@@ -321,4 +324,6 @@ body {
 .ofitech-footer__info {
   font-size: 14px;
   line-height: 1.4;
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*# sourceMappingURL=main.css.map */

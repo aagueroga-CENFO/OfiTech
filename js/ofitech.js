@@ -1,55 +1,76 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    const res = await fetch('js/data.json');
-    const data = await res.json();
+let productos
 
-    renderCategorias(data.categorias);
-    renderOfertas(data.ofertasDestacadas);
-    renderProductos(data.productosMasVendidos);
-    renderBeneficios(data.beneficios);
+const categorias = [
+    { nombre: 'Computadoras', icono: 'fa-laptop' },
+    { nombre: 'Todo en uno', icono: 'fa-desktop' },
+    { nombre: 'Componentes', icono: 'fa-microchip' },
+    { nombre: 'Memorias', icono: 'fa-memory' }
+];
+
+const beneficios = [
+    { nombre: 'Garantía', icono: 'fa-shield-halved', descripcion: 'Productos garantizados' },
+    { nombre: 'Envíos rápidos', icono: 'fa-truck-fast', descripcion: 'Entrega express' },
+    { nombre: 'Soporte local', icono: 'fa-headset', descripcion: 'Atención personalizada' }
+];
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const res = await fetch('https://fakestoreapi.com/products/category/electronics');
+    const data = await res.json();
+    console.log(data);
+    productos = data;
+    
+    renderizarCategorias();
+    renderizarBeneficios();
+    renderizarProductos(productos);
+    renderizarOfertas(productos);
+
     setupCarousel();
 });
 
-function renderCategorias(categorias) {
+function renderizarCategorias() {
     const container = document.getElementById('categorias-container');
     container.innerHTML = '<a href="catalogo.html" class="categoria-btn">Ver todo el catálogo</a>' + categorias.map(cat =>
         `<button class="categoria-btn">${cat.nombre}</button>`
     ).join('');
 }
 
-function renderOfertas(ofertas) {
-    const slider = document.getElementById('ofertas-slider');
-    slider.innerHTML = ofertas.map(p => renderProductCard(p, 'oferta')).join('');
+function renderizarBeneficios() {
+    const container = document.getElementById('beneficios-grid');
+    container.innerHTML = beneficios.map(b => 
+        `<div class="beneficio-item">
+            <i class="fa-solid ${b.icono}"></i>
+            <span>${b.nombre}</span>
+        </div>`
+    ).join('');
 }
 
-function renderProductos(productos) {
-    const grid = document.getElementById('productos-grid');
-    grid.innerHTML = productos.map(p => renderProductCard(p, 'producto')).join('');
+function getRandomProducts(arr, n) {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, n);
 }
 
-function renderProductCard(p, tipo) {
-    const formatter = new Intl.NumberFormat('es-CR', { style: 'currency', currency: 'CRC', minimumFractionDigits: 0 });
+function renderProductCard(p) {
     return `
-    <div class="product-card ${tipo}-card">
+    <div class="product-card">
         <div class="product-img-wrap">
-            <img src="${p.imagen}" alt="${p.nombre}">
-            ${p.precioOferta ? `<span class="badge-oferta">${formatter.format(p.precioOferta)}</span>` : ''}
+            <img src="${p.image}" alt="${p.title}">
         </div>
         <div class="product-info">
-            <span class="product-price-old">${formatter.format(p.precioOriginal)}</span>
-            <span class="product-price">${formatter.format(p.precioOferta || p.precioOriginal)}</span>
-            <p class="product-name">${p.nombre}</p>
+            <span class="product-price">$${p.price}</span>
+            <p class="product-name">${p.title}</p>
         </div>
     </div>`;
 }
 
-function renderBeneficios(beneficios) {
-    const grid = document.getElementById('beneficios-grid');
-    grid.innerHTML = beneficios.map(b => `
-        <div class="beneficio-item">
-            <i class="${b.icono}"></i>
-            <span>${b.titulo}</span>
-        </div>
-    `).join('');
+function renderizarProductos(productos) {
+    const productosGrid = document.getElementById('productos-grid');
+    productosGrid.innerHTML = productos.map(producto => renderProductCard(producto)).join('');
+}
+
+function renderizarOfertas(productos) {
+    const slider = document.getElementById('ofertas-slider');
+    const ofertas = getRandomProducts(productos, 3);
+    slider.innerHTML = ofertas.map(producto => renderProductCard(producto)).join('');
 }
 
 function setupCarousel() {
