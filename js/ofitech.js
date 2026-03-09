@@ -1,10 +1,8 @@
 let productos
 
 const categorias = [
-    { nombre: 'Computadoras', icono: 'fa-laptop' },
-    { nombre: 'Todo en uno', icono: 'fa-desktop' },
-    { nombre: 'Componentes', icono: 'fa-microchip' },
-    { nombre: 'Memorias', icono: 'fa-memory' }
+    { nombre: 'Almacenamiento', icono: 'fa-hard-drive' },
+    { nombre: 'Monitores', icono: 'fa-desktop' }
 ];
 
 const beneficios = [
