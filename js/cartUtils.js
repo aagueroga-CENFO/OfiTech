@@ -45,6 +45,28 @@ function cartUtils_showToast(msg) {
     setTimeout(function() { toast.classList.remove('show'); }, 3000);
 }
 
+// Setup navbar search redirect to catalog
+function cartUtils_setupSearch() {
+    var searchInput = document.getElementById('navbar-search');
+    if (!searchInput) return;
+    // Skip if we're on catalog page (it has its own handler)
+    if (window.location.pathname.indexOf('catalogo.html') !== -1) return;
+    
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            var term = searchInput.value.trim();
+            if (term) {
+                window.location.href = 'catalogo.html?buscar=' + encodeURIComponent(term);
+            }
+        }
+    });
+}
+
+// Auto-init search on all pages
+document.addEventListener('DOMContentLoaded', function() {
+    cartUtils_setupSearch();
+});
+
 function cartUtils_getFavs() {
     return JSON.parse(localStorage.getItem('ofitechFavs') || '[]');
 }

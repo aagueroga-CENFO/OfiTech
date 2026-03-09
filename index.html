@@ -14,13 +14,26 @@
 <body>
     <header>
         <nav class="ofitech-navbar">
-            <div class="ofitech-navbar__logo">
+            <a href="index.html" class="ofitech-navbar__logo text-decoration-none">
                 <span class="ofitech-logo-ofi">Ofi</span><span class="ofitech-logo-tech">Tech</span>
-            </div>
-            <div class="ofitech-navbar__search">
+            </a>
+            <div class="ofitech-navbar__center">
+                <div class="dropdown">
+                    <button class="categorias-dropdown-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categorías
+                    </button>
+                    <ul class="dropdown-menu categorias-dropdown-menu">
+                        <li><a class="dropdown-item" href="catalogo.html">Ver todo el catálogo</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="catalogo.html?categoria=Computadoras">Computadoras</a></li>
+                        <li><a class="dropdown-item" href="catalogo.html?categoria=Todo en uno">Todo en uno</a></li>
+                        <li><a class="dropdown-item" href="catalogo.html?categoria=Componentes">Componentes</a></li>
+                        <li><a class="dropdown-item" href="catalogo.html?categoria=Memorias">Memorias</a></li>
+                    </ul>
+                </div>
                 <div class="ofitech-search-box">
                     <i class="fa-solid fa-search"></i>
-                    <input type="text" placeholder="buscar por categoría, producto, marca" disabled>
+                    <input type="text" id="navbar-search" placeholder="buscar por nombre de producto">
                 </div>
             </div>
             <div class="ofitech-navbar__icons">
@@ -31,9 +44,6 @@
         </nav>
     </header>
     <main class="ofitech-main">
-        <section class="categorias-nav">
-            <div class="categorias-container" id="categorias-container"></div>
-        </section>
         <section class="ofertas-section">
             <h2 class="section-title">Ofertas destacadas</h2>
             <div class="ofertas-carousel">
