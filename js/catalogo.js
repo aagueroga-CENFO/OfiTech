@@ -65,11 +65,20 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ── Filtros (todo client-side, fakestoreapi devuelve 20 productos) ──
+// Helper to detect subcategory from product title
+function getSubcategoria(producto) {
+    var title = producto.title.toLowerCase();
+    if (title.indexOf('monitor') >= 0 || title.indexOf('display') >= 0 || title.indexOf('inch') >= 0) {
+        return 'Monitores';
+    }
+    return 'Almacenamiento'; // SSD, Hard Drive, etc.
+}
+
 function aplicarFiltros() {
     var f    = state.filtros;
     var lista = state.todos.slice();
 
-    if (f.categoria) lista = lista.filter(function(p) { return p.category === f.categoria; });
+    if (f.categoria) lista = lista.filter(function(p) { return getSubcategoria(p) === f.categoria; });
     if (f.buscar)    lista = lista.filter(function(p) { return p.title.toLowerCase().indexOf(f.buscar) >= 0; });
     if (f.precioMin) lista = lista.filter(function(p) { return p.price >= Number(f.precioMin); });
     if (f.precioMax) lista = lista.filter(function(p) { return p.price <= Number(f.precioMax); });
