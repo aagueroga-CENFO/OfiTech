@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var params = new URLSearchParams(window.location.search);
     if (params.get('categoria')) state.filtros.categoria = params.get('categoria');
+    if (params.get('buscar')) {
+        state.filtros.buscar = params.get('buscar').toLowerCase();
+        $id('navbar-search').value = params.get('buscar');
+    }
 
     renderSkeletons();
 

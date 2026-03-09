@@ -14,17 +14,23 @@ const beneficios = [
 ];
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const res = await fetch('https://fakestoreapi.com/products/category/electronics');
-    const data = await res.json();
-    console.log(data);
-    productos = data;
-    
-    renderizarCategorias();
+    // Render beneficios first (doesn't depend on API)
     renderizarBeneficios();
-    renderizarProductos(productos);
-    renderizarOfertas(productos);
-
-    setupCarousel();
+    
+    try {
+        const res = await fetch('https://fakestoreapi.com/products/category/electronics');
+        const data = await res.json();
+        console.log(data);
+        productos = data;
+        
+        renderizarProductos(productos);
+        renderizarOfertas(productos);
+        setupCarousel();
+    } catch (err) {
+        console.error('Error loading products:', err);
+        document.getElementById('productos-grid').innerHTML = '<p style="color:#999;text-align:center;">Error al cargar productos</p>';
+        document.getElementById('ofertas-slider').innerHTML = '<p style="color:#999;text-align:center;">Error al cargar ofertas</p>';
+    }
 });
 
 function renderizarCategorias() {
